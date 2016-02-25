@@ -1,29 +1,39 @@
 {
-	"name": "leave-cursor",
-	"displayName": "leave-cursor",
-	"description": "",
-	"version": "0.0.1",
-	"publisher": "naumovs",
-	"engines": {
-		"vscode": "^0.10.6"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.sayHello"
-	],
-	"main": "./extension",
-	"contributes": {
-		"commands": [{
-			"command": "extension.sayHello",
-			"title": "Hello World"
-		}]
-	},
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"devDependencies": {
-		"vscode": "^0.11.0"
-	}
+  "name": "leave-cursor",
+  "displayName": "Leave cursor",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "naumovs",
+  "engines": {
+    "vscode": "^0.10.6"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.leave-cursor"
+  ],
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "vscode:prepublish": "node ./node_modules/webpack/bin/webpack.js",
+    "compile": "node ./node_modules/webpack/bin/webpack.js -w"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naumovs/vscode-ext-leave-cursor/issues"
+  },
+  "homepage": "https://github.com/naumovs/vscode-ext-leave-cursor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naumovs/vscode-ext-leave-cursor.git"
+  },
+  "main": "./dist/extension",
+  "icon": "images/semicolon.png",
+  "contributes": {
+    "commands": []
+  },
+  "devDependencies": {
+    "vscode": "^0.11.0",
+    "webpack": "^1.12.12"
+  }
 }
