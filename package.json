@@ -11,7 +11,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.leave-cursor"
+    "*"
   ],
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
@@ -30,7 +30,13 @@
   "main": "./dist/extension",
   "icon": "images/semicolon.png",
   "contributes": {
-    "commands": []
+    "commands": [{
+        "command": "extension.leave-cursor.anchor",
+        "title": "Cursor tools: Leave anchor"
+    }, {
+        "command": "extension.leave-cursor.activate",
+        "title": "Cursor tools: Activate anchors"
+    }]
   },
   "devDependencies": {
     "vscode": "^0.11.0",

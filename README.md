@@ -1,13 +1,16 @@
-# README
-## This is the README for your extension "leave-cursor" 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+# [vscode-ext-trailing-semicolon](https://github.com/naumovs/vscode-ext-trailing-semicolon)
+Provides with the command to append semicolon to the end of current line.
+## Install
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
+In VSC press Ctrl+Shift+P (Cmd+Shift+P on Mac) then type ">ext install", hit enter, search "Trailing Semicolon".
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Still confused? Click "Get Started" above.
 
-** Enjoy!**
+## Usage
+
+By default the provided command bound to "cmd+;" keybind
+
+## TODO
+
+## Contribution
+Feel free to contribute!
