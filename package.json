@@ -1,7 +1,7 @@
 {
   "name": "cursor-tools",
   "displayName": "Cursor tools",
-  "description": "",
+  "description": "Leave anchors in the document and create multiple cursors out of them!",
   "version": "1.0.0",
   "publisher": "naumovs",
   "engines": {
