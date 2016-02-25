@@ -1,8 +1,8 @@
 {
-  "name": "leave-cursor",
-  "displayName": "Leave cursor",
+  "name": "cursor-tools",
+  "displayName": "Cursor tools",
   "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "naumovs",
   "engines": {
     "vscode": "^0.10.6"
@@ -20,22 +20,41 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/naumovs/vscode-ext-leave-cursor/issues"
+    "url": "https://github.com/naumovs/vscode-ext-cursor-tools/issues"
   },
-  "homepage": "https://github.com/naumovs/vscode-ext-leave-cursor",
+  "homepage": "https://github.com/naumovs/vscode-ext-cursor-tools",
   "repository": {
     "type": "git",
-    "url": "https://github.com/naumovs/vscode-ext-leave-cursor.git"
+    "url": "https://github.com/naumovs/vscode-ext-cursor-tools.git"
   },
   "main": "./dist/extension",
-  "icon": "images/semicolon.png",
+  "icon": "images/cursor-tools.png",
   "contributes": {
     "commands": [{
-        "command": "extension.leave-cursor.anchor",
-        "title": "Cursor tools: Leave anchor"
+        "command": "extension.cursor-tools.anchor",
+        "title": "Cursor tools: Toggle anchor at cursor position"
     }, {
-        "command": "extension.leave-cursor.activate",
-        "title": "Cursor tools: Activate anchors"
+        "command": "extension.cursor-tools.activate",
+        "title": "Cursor tools: Activate cursors at all anchor positions"
+    }, {
+        "command": "extension.cursor-tools.clean",
+        "title": "Cursor tools: Clean all anchors in current document"
+    }],
+    "keybindings": [{
+        "command": "extension.cursor-tools.anchor",
+        "key": "ctrl+alt+e",
+        "mac": "ctrl+cmd+e",
+        "when": "editorTextFocus"
+    }, {
+        "command": "extension.cursor-tools.activate",
+        "key": "ctrl+alt+r",
+        "mac": "ctrl+cmd+r",
+        "when": "editorTextFocus"
+    }, {
+        "command": "extension.cursor-tools.clean",
+        "key": "shift+ctrl+alt+r",
+        "mac": "shift+ctrl+cmd+r",
+        "when": "editorTextFocus"
     }]
   },
   "devDependencies": {
