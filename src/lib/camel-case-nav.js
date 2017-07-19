@@ -23,7 +23,7 @@ export class CamelCaseNav {
     }
   }
 
-  doAction(editor, dir, action) {
+  doAction(editor, edit, dir, action) {
     if (!editor) {
       return;
     }
@@ -32,7 +32,7 @@ export class CamelCaseNav {
     const results = [];
 
     for (let i = 0, len = selections.length; i < len; i++) {
-      results.push(this.singleCursorAction(document, selections[i], dir, action))
+      results.push(this.singleCursorAction(document, edit, selections[i], dir, action))
     }
 
     editor.selections = results;
@@ -40,7 +40,7 @@ export class CamelCaseNav {
     editor.revealRange(results[0].with(results[0].active, results[0].active))
   }
 
-  singleCursorAction(document, selection, dir, action) {
+  singleCursorAction(document, edit, selection, dir, action) {
     const nextPos = this.findNextPos(document, selection, selection.active, dir);
 
     if (nextPos.compareTo(selection.active) === 0) {
@@ -54,7 +54,11 @@ export class CamelCaseNav {
       return new vscode.Selection(selection.anchor, nextPos);
     }
     if (action === ACTION_DELETE) {
-      return sel["delete"]();
+      const deleteRange = new vscode.Selection(selection.anchor, nextPos);
+
+      edit.delete(deleteRange);
+
+      return selection;
     }
   }
 

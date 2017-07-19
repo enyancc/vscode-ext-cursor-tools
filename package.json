@@ -2,7 +2,7 @@
   "name": "cursor-tools",
   "displayName": "Cursor tools",
   "description": "Leave anchors in the document and create multiple cursors out of them!",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publisher": "naumovs",
   "engines": {
     "vscode": "^1.1.0"
@@ -30,38 +30,45 @@
   "main": "./dist/extension",
   "icon": "images/cursor-tools.png",
   "contributes": {
+    "configuration": {
+      "title": "Cursor tools",
+      "properties": {
+        "cursor-tools.subWordNavigation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable camelCase navigation with following commands: (cursorWordStartLeft,cursorWordEndRight,cursorWordStartLeftSelect,cursorWordEndRightSelect,deleteWordLeft,deleteWordRight) "
+        }
+      }
+    },
     "commands": [
       {
-        "command": "extension.cursor-tools.anchor",
+        "command": "cursorToolsAnchorLeave",
         "title": "Cursor tools: Toggle anchor at cursor position"
       },
       {
-        "command": "extension.cursor-tools.activate",
+        "command": "cursorToolsAnchorActivate",
         "title": "Cursor tools: Activate cursors at all anchor positions"
       },
       {
-        "command": "extension.cursor-tools.clean",
+        "command": "cursorToolsAnchorClean",
         "title": "Cursor tools: Clean all anchors in current document"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.cursor-tools.anchor",
-        "key": "ctrl+alt+e",
-        "mac": "ctrl+cmd+e",
+        "command": "cursorToolsAnchorLeave",
+        "key": "ctrl+alt+down",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.cursor-tools.activate",
-        "key": "ctrl+alt+r",
-        "mac": "ctrl+cmd+r",
+        "command": "cursorToolsAnchorActivate",
+        "key": "ctrl+alt+up",
         "when": "editorTextFocus"
       },
       {
-        "command": "extension.cursor-tools.clean",
-        "key": "shift+ctrl+alt+r",
-        "mac": "shift+ctrl+cmd+r",
-        "when": "editorTextFocus"
+        "command": "cursorToolsAnchorClean",
+        "key": "escape",
+        "when": "editorTextFocus && cursorToolsAnchors"
       }
     ]
   },

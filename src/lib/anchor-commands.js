@@ -3,7 +3,10 @@ const vscode = require('vscode');
 const decor = vscode.window.createTextEditorDecorationType({
   borderStyle: 'solid',
   borderWidth: '1px',
-  borderColor: 'rgba(255, 255, 255, 0.2)'
+  borderColor: 'rgba(255, 255, 255, 0.3)',
+  light: {
+    borderColor: 'rgba(0, 0, 0, 0.3)',
+  }
 });
 
 module.exports = {
@@ -13,7 +16,7 @@ module.exports = {
   onDidChangeTextDocument
 };
 
-function onCommandToggleAnchor (textEditor, textEditorEdit) {
+function onCommandToggleAnchor(textEditor, textEditorEdit) {
   const currentDocumentOffset = textEditor.document.offsetAt(textEditor.selection.active);
   const index = isAnchorExist(textEditor, currentDocumentOffset);
 
@@ -23,10 +26,12 @@ function onCommandToggleAnchor (textEditor, textEditorEdit) {
     textEditor.cursorAnchors.splice(index, 1);
   }
 
+  setContext(textEditor.cursorAnchors.length > 0);
+
   updateDecorations(textEditor);
 }
 
-function onCommandActivateCursors (textEditor, textEditorEdit) {
+function onCommandActivateCursors(textEditor, textEditorEdit) {
   const currentDocumentOffset = textEditor.document.offsetAt(textEditor.selection.active);
 
   textEditor.selections = [currentDocumentOffset]
@@ -36,13 +41,15 @@ function onCommandActivateCursors (textEditor, textEditorEdit) {
   onCommandCleanAnchors(textEditor, textEditorEdit);
 }
 
-function onCommandCleanAnchors (textEditor, textEditorEdit) {
+function onCommandCleanAnchors(textEditor, textEditorEdit) {
   textEditor.cursorAnchors = [];
+
+  setContext(false);
 
   updateDecorations(textEditor);
 }
 
-function onDidChangeTextDocument (textDocumentChangeEvent) {
+function onDidChangeTextDocument(textDocumentChangeEvent) {
   const textEditor = vscode.window.activeTextEditor;
   const textDocument = textDocumentChangeEvent.document;
 
@@ -73,7 +80,7 @@ function onDidChangeTextDocument (textDocumentChangeEvent) {
 }
 
 
-function updateDecorations (textEditor) {
+function updateDecorations(textEditor) {
   const decorRange = textEditor.cursorAnchors
     .map(createRange.bind(textEditor));
 
@@ -81,18 +88,22 @@ function updateDecorations (textEditor) {
 }
 
 
-function isAnchorExist (textEditor, currentDocumentOffset) {
+function isAnchorExist(textEditor, currentDocumentOffset) {
   return textEditor.cursorAnchors.indexOf(currentDocumentOffset);
 }
 
-function createSelection (offset) {
+function createSelection(offset) {
   const position = this.document.positionAt(offset);
 
   return new vscode.Selection(position, position);
 }
 
-function createRange (offset) {
+function createRange(offset) {
   const position = this.document.positionAt(offset);
 
   return new vscode.Range(position, position);
+}
+
+function setContext(value) {
+  vscode.commands.executeCommand('setContext', 'cursorToolsAnchors', value);
 }
