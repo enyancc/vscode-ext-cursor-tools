@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "publisher": "naumovs",
   "engines": {
-    "vscode": "^0.10.6"
+    "vscode": "^1.1.0"
   },
   "categories": [
     "Other"
@@ -16,7 +16,7 @@
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
     "vscode:prepublish": "node ./node_modules/webpack/bin/webpack.js",
-    "compile": "node ./node_modules/webpack/bin/webpack.js -w"
+    "dev": "node ./node_modules/webpack/bin/webpack.js -w"
   },
   "license": "MIT",
   "bugs": {
@@ -30,35 +30,49 @@
   "main": "./dist/extension",
   "icon": "images/cursor-tools.png",
   "contributes": {
-    "commands": [{
+    "commands": [
+      {
         "command": "extension.cursor-tools.anchor",
         "title": "Cursor tools: Toggle anchor at cursor position"
-    }, {
+      },
+      {
         "command": "extension.cursor-tools.activate",
         "title": "Cursor tools: Activate cursors at all anchor positions"
-    }, {
+      },
+      {
         "command": "extension.cursor-tools.clean",
         "title": "Cursor tools: Clean all anchors in current document"
-    }],
-    "keybindings": [{
+      }
+    ],
+    "keybindings": [
+      {
         "command": "extension.cursor-tools.anchor",
         "key": "ctrl+alt+e",
         "mac": "ctrl+cmd+e",
         "when": "editorTextFocus"
-    }, {
+      },
+      {
         "command": "extension.cursor-tools.activate",
         "key": "ctrl+alt+r",
         "mac": "ctrl+cmd+r",
         "when": "editorTextFocus"
-    }, {
+      },
+      {
         "command": "extension.cursor-tools.clean",
         "key": "shift+ctrl+alt+r",
         "mac": "shift+ctrl+cmd+r",
         "when": "editorTextFocus"
-    }]
+      }
+    ]
   },
   "devDependencies": {
-    "vscode": "^0.11.0",
-    "webpack": "^1.12.12"
+    "vscode": "^1.1.0",
+    "webpack": "3.2.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.6.0"
   }
 }
