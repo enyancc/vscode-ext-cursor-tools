@@ -1,5 +1,9 @@
 # Change Log
-## [2.0.0] - 2017-05-15
+## [2.0.1] - 2017-07-20
+### Fixed
+  - Hotkeys for windows
+
+## [2.0.0] - 2017-07-19
 ### Added
   - subWord navigation mode for cursor
 ### BREAKING CHANGE

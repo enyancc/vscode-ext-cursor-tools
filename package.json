@@ -2,7 +2,7 @@
   "name": "cursor-tools",
   "displayName": "Cursor tools",
   "description": "Leave anchors in the document and create multiple cursors out of them!",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "publisher": "naumovs",
   "engines": {
     "vscode": "^1.1.0"
@@ -58,11 +58,13 @@
       {
         "command": "cursorToolsAnchorLeave",
         "key": "ctrl+alt+down",
+        "win": "ctrl+win+down",
         "when": "editorTextFocus"
       },
       {
         "command": "cursorToolsAnchorActivate",
         "key": "ctrl+alt+up",
+        "win": "ctrl+win+up",
         "when": "editorTextFocus"
       },
       {
