@@ -118,8 +118,12 @@ function onCommandCleanAnchors(textEditor, textEditorEdit) {
 }
 
 function onDidChangeTextDocument(textDocumentChangeEvent) {
-    const textEditor = vscode.window.activeTextEditor;
     if (!textDocumentChangeEvent) {
+        return;
+    }
+
+    const textEditor = vscode.window.activeTextEditor;
+    if (!textEditor) {
         return;
     }
 
